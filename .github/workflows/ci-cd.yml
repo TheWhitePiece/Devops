@@ -142,7 +142,8 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest' # This line must be present
+          # CORRECTED: Scan the ':latest' tag which is present on the local Docker image
+          image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest'
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
